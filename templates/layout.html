@@ -13,15 +13,6 @@
             <a href="{{ url_for('register') }}">CADASTRO</a>
             <a href="{{ url_for('news') }}">NOVIDADES</a>
             <a href="{{ url_for('contact_us') }}">FALE CONOSCO</a>
-            
-            <!-- <div class="login-container">
-                <form action="/action_page.php">
-                    <input type="text" placeholder="Username" name="username">
-                    <input type="text" placeholder="Password" name="psw">
-                    <button type="submit">Login</button>
-                </form>
-            </div> -->
-            <!-- <img id="home-image" src="{{ url_for('static', filename='home_image.jpg') }}"> -->
             {% block div %}{% endblock %}
         </div>
         {% block body %}{% endblock %}

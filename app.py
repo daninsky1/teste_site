@@ -13,11 +13,6 @@ db_con = sqlite3.connect("test.db")
 db_cur = db_con.cursor()
 # NOTE(daniel): tables are dropped every time. that is we start fresh every run.
 
-# TODO(daniel): add drop table after the debugging
-# CREATE TABLE IF EXISTS usuario;
-
-# TODO(daniel): link to schema.sql
-
 with app.open_resource(database) as f:
     db_cur.executescript(f.read().decode("utf8"))
     
@@ -33,7 +28,6 @@ db_con.close()
 # NOTE(daniel): HOME
 @app.route("/", methods=["GET", "POST"])
 def index():
-    # TODO(daniel): Render the login form index.html
     # NOTE(daniel): Login state
     name = ""
     cpf = session.get("cpf")
@@ -106,11 +100,6 @@ def validate_register():
     
 @app.route("/login", methods=["POST"])
 def login():
-    # TODO(daniel): login validation and redirection
-    # if request.method == "POST":
-    #     session["cpf"] = request.form.get("cpf-usuario")
-    #     session["password"] = request.form.get("senha-usuario")
-    #     return redirect("/")
     db_con = sqlite3.connect("test.db")
     db_cur = db_con.cursor()
     
@@ -129,7 +118,6 @@ def login():
 
 @app.route("/logout")
 def logout():
-    # TODO(daniel): Logout
     session["cpf"] = None
     session["senha"] = None
     return redirect("/")
