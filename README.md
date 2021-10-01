@@ -1,4 +1,4 @@
-Criar e iniciar venv:
+Criar e Iniciar Python venv:
 <br/>
 Windows:<br/>
 `py -3 -m venv venv`<br/>
@@ -7,6 +7,6 @@ Linux:<br/>
 `python3 -m venv venv`<br/>
 `./venv/bin/activate`<br/><br/>
 
-Instalar e iniciar Flask:<br/>
+Instalar e Iniciar Flask:<br/>
 `pip install Flask`<br/>
 `flask run`
