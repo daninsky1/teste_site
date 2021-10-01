@@ -51,7 +51,12 @@ def index():
 # NOTE(daniel): CADASTRO E LOGIN
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    return render_template("register.html")
+    login_st = False
+    if session.get("cpf"):
+        login_st = True
+        return render_template("fail.html", err_message=f"Você já está cadastrado.", login_session=login_st)
+    else:
+        return render_template("register.html")
 
 @app.route("/validate_register", methods=["POST"])
 def validate_register():
@@ -100,6 +105,9 @@ def validate_register():
     
 @app.route("/login", methods=["POST"])
 def login():
+    login_st = False
+    if session.get("cpf"):
+        login_st = True
     db_con = sqlite3.connect("test.db")
     db_cur = db_con.cursor()
     
@@ -113,7 +121,7 @@ def login():
             session["senha"] = password
             return redirect("/")
         else:
-            return render_template("fail.html", err_message="Falha no Login.")
+            return render_template("fail.html", err_message="Falha no Login.", login_session=login_st)
 
 
 @app.route("/logout")
@@ -126,6 +134,9 @@ def logout():
 # NOTE(daniel): NOVIDADES
 @app.route("/news")
 def news():
+    login_st = False
+    if session.get("cpf"):
+        login_st = True
     db_con = sqlite3.connect("test.db")
     db_cur = db_con.cursor()
     
@@ -137,20 +148,26 @@ def news():
     print(list_novidades)
     print(len(list_novidades))
     
-    return render_template("news.html", news=list_novidades)
+    return render_template("news.html", news=list_novidades, login_session=login_st)
     
     
 #NOTE(daniel): FALE CONOSCO
 @app.route("/contact_us")
 def contact_us():
-    return render_template("contact_us.html")
+    login_st = False
+    if session.get("cpf"):
+        login_st = True
+    return render_template("contact_us.html", login_session=login_st)
     
     
 @app.route("/contact_us_send_msg", methods=["POST"])
 def contact_us_send_msg():
+    login_st = False
+    if session.get("cpf"):
+        login_st = True
     # NOTE(daniel): Contact us message
     name = request.form.get("nome")
     email = request.form.get("email")
     msg = request.form.get("menssagem")
     
-    return render_template("contact_us_success.html")
+    return render_template("contact_us_success.html", login_session=login_st)

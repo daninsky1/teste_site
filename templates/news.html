@@ -1,5 +1,21 @@
 {% extends "layout.html" %}
 
+{% block div %}
+    {% if login_session %}
+        <div class="login-container">
+            <a href="{{ url_for('logout') }}">LOG OUT</a>
+        </div>
+    {% else %}
+        <div class="login-container">
+            <form action="/login" method="post">
+                <input type="text" placeholder="CPF" name="cpf">
+                <input type="password" placeholder="SENHA" name="senha">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
+
 {% block body %}
     <h1>NOVIDADES</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
