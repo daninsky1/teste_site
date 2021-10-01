@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    </div>
+    <h2>CADASTRO</h2>
+    <form action="/validate_register" method="post">
+        NOME
+        <br/>
+        <input name="nome" type="text" required autofocus
+        oninvalid="this.setCustomValidity('Escreva seu nome.')" oninput="this.setCustomValidity('')">
+        <br/>
+        CPF
+        <br/>
+        <input name="cpf" type="number" required
+        oninvalid="this.setCustomValidity('CPF inválido.')" oninput="this.setCustomValidity('')">
+        <br/>
+        EMAIL
+        <br/>
+        <input name="email" type="email" required
+        oninvalid="this.setCustomValidity('Email inválido.')" oninput="this.setCustomValidity('')">
+        <br/>
+        DATA DE NASCIMENTO
+        <br/>
+        <input name="nascimento" type="date" value="2002-01-01" min="1910-01-01" max="2006-01-01"
+        required>
+        <br/>
+        SENHA
+        <br/>
+        <!-- TODO(daniel): change minlength="8" on release -->
+        <input name="senha" type="password" minlength="4" required 
+        oninvalid="this.setCustomValidity('Senha inválida. Mínimo 4 dígitos.')" oninput="this.setCustomValidity('')">
+        <br/>
+        CONFIRMAR SENHA
+        <br/>
+        <input name="confirmar-senha" type="password" minlength="4" required>
+        <br/>
+        <input type="submit" value="SALVAR">
+    </form>
+{% endblock %}
