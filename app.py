@@ -143,7 +143,7 @@ def news():
     max_news_per_page = "4"
     
     novidades = db_cur.execute(
-        "SELECT * FROM novidade ORDER BY date(novidade_data) LIMIT ?;", max_news_per_page)
+        "SELECT * FROM novidade ORDER BY date(novidade_data) DESC LIMIT ?;", max_news_per_page)
     list_novidades = db_cur.fetchall()
     print(list_novidades)
     print(len(list_novidades))
