@@ -1,7 +1,7 @@
-// TODO(daniel): Make a server side checker.
+// TODO(daniel): This do not work for now.
 // NOTE(daniel): Client-side password evaluation.
 let password_input = document.getElementById("password")
-let confirm_password_input = document.getElementById("confirm_password");
+let confirm_password_input = document.getElementById("confirm-password");
 
 function validatePassword(){
     if(password.value != confirm_password.value) {

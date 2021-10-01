@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block body %}
-    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
     <h2>CADASTRO</h2>
     <form action="/validate_register" method="post">
         NOME
@@ -42,12 +42,12 @@
         <br/>
         SENHA
         <br/>
-        <input name="senha" type="password" minlength="4" required 
+        <input id="password" name="senha" type="password" minlength="4" required 
         oninvalid="this.setCustomValidity('Senha inválida. Mínimo 4 dígitos.')" oninput="this.setCustomValidity('')">
         <br/>
         CONFIRMAR SENHA
         <br/>
-        <input name="confirmar-senha" type="password" minlength="4" required>
+        <input id="confirm-password" name="confirmar-senha" type="password" minlength="4" required>
         <br/>
         <input type="submit" value="SALVAR">
     </form>
