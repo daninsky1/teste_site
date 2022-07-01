@@ -10,3 +10,5 @@ Linux:<br/>
 Instalar e Iniciar Flask:<br/>
 `pip install Flask`<br/>
 `flask run`
+
+Antes de `flask run` configurar variável de sistema FLASK_APP=app.py
